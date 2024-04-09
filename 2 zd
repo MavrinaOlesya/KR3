@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class numbers {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        List<Integer> numbers = new ArrayList<>();
+        String[] inputs = input.nextLine().split(" ");
+        for (String number : inputs) {
+            numbers.add(Integer.parseInt(number));
+        }
+
+        int x = input.nextInt();
+
+        int i = 0;
+        int j = numbers.size() - 1;
+
+        while (i < j) {
+            if (numbers.get(i) > x && numbers.get(j) <= x) {
+                int temp = numbers.get(i);
+                numbers.set(i, numbers.get(j));
+                numbers.set(j, temp);
+            }
+
+            if (numbers.get(i) <= x) {
+                i++;
+            }
+
+            if (numbers.get(j) > x) {
+                j--;
+            }
+        }
+
+        System.out.println(numbers);
+    }
+}
+
